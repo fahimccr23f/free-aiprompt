@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Free AI Prompt — AI Image Prompt Library</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap">
+<style>
+:root{--bg:#f6f4fb;--panel:#fff;--text:#1b1630;--muted:#6b6785;--line:rgba(30,20,60,.12);--acc:#7c3aed;--acc2:#d946ef;--chip:#ece6fb;--font:'DM Sans','Hind Siliguri',system-ui,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d0d14;--panel:#16161f;--text:#f5f3fb;--muted:#9c9ab0;--line:rgba(255,255,255,.1);--acc:#a78bfa;--acc2:#e879f9;--chip:#272239}}
+:root[data-theme="dark"]{--bg:#0d0d14;--panel:#16161f;--text:#f5f3fb;--muted:#9c9ab0;--line:rgba(255,255,255,.1);--acc:#a78bfa;--acc2:#e879f9;--chip:#272239}
+html{height:100%;scroll-behavior:smooth;scroll-padding-top:90px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:14px/1.6 var(--font)}
+button,input,select{font:inherit;color:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:11}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.bar{max-width:1180px;margin:auto;height:64px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:19px}
+.mark{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff}
+nav{display:flex;gap:22px;color:var(--muted)}nav a:hover,nav a.on{color:var(--text)}
+.btn{border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:7px 12px;font-size:12px}
+.btn:hover{border-color:var(--acc)}
+.primary{background:linear-gradient(105deg,var(--acc),var(--acc2));color:#fff;border:0;font-weight:600;padding:10px 16px;border-radius:10px}
+main{max-width:1180px;margin:auto;padding:0 20px}
+.hero{padding:64px 0 40px;text-align:center}
+.eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--acc);background:var(--chip);padding:6px 12px;border-radius:99px}
+h1{font-size:clamp(34px,6vw,60px);line-height:1.12;letter-spacing:-2px;margin:18px 0}
+.grad{background:linear-gradient(95deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);max-width:520px;margin:0 auto 24px}
+.search{display:flex;align-items:center;gap:10px;max-width:520px;margin:auto;height:54px;padding:0 16px;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
+.search:focus-within{border-color:var(--acc);box-shadow:0 0 0 3px color-mix(in srgb,var(--acc) 22%,transparent)}
+.search input{flex:1;min-width:0;border:0;outline:0;background:none}
+.stats{display:flex;justify-content:center;gap:28px;margin-top:26px;color:var(--muted);font-size:12px;flex-wrap:wrap}
+.stats b{display:block;font-size:22px;color:var(--text)}
+.pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;padding:18px 0 8px}
+.pill{border:1px solid var(--line);background:var(--panel);border-radius:99px;padding:8px 14px;font-size:12px;color:var(--muted)}
+.pill.on,.pill:hover{background:var(--chip);color:var(--text);border-color:var(--acc)}
+.tool{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:22px 0 16px;flex-wrap:wrap}
+.tool h2{margin:0;font-size:24px;letter-spacing:-.5px}
+.count{font-size:12px;background:var(--chip);padding:2px 8px;border-radius:7px;vertical-align:middle}
+select{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:.2s}
+.card:hover{transform:translateY(-4px);border-color:var(--acc)}
+.art{height:170px;position:relative;overflow:hidden;cursor:pointer}.art svg,.pic{position:absolute;inset:0;width:100%;height:100%}.pic{object-fit:cover}
+.tag{position:absolute;left:10px;top:10px;background:rgba(0,0,0,.45);color:#fff;font-size:10px;padding:4px 8px;border-radius:7px}
+.heart{position:absolute;right:10px;top:10px;width:32px;height:32px;border-radius:9px;border:0;background:rgba(0,0,0,.45);color:#fff;font-size:16px}
+.heart.on{color:#f9a8d4}
+.body{padding:14px}
+.body h3{margin:0 0 4px;font-size:14px;cursor:pointer}
+.body p{margin:0 0 12px;font-size:12px;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:38px}
+.foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:10px;font-size:11px;color:var(--muted)}
+.copy{border:1px solid var(--line);background:var(--chip);border-radius:8px;padding:6px 10px;font-size:11px}
+.copy:hover{border-color:var(--acc)}
+.empty{display:none;text-align:center;padding:50px;color:var(--muted)}.empty.on{display:block}
+.more{text-align:center;margin:28px 0 50px}
+.cta{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:26px;border-radius:18px;background:linear-gradient(105deg,color-mix(in srgb,var(--acc) 18%,var(--panel)),color-mix(in srgb,var(--acc2) 16%,var(--panel)));border:1px solid var(--line);margin-bottom:44px}
+.cta div{flex:1;min-width:200px}.cta h2{margin:0;font-size:22px}.cta p{margin:2px 0 0;color:var(--muted)}
+footer{background:var(--panel);border-top:1px solid var(--line);margin-top:20px}.fw{max-width:1180px;margin:auto;padding:36px 20px 20px;display:grid;grid-template-columns:1.4fr 1fr 1.2fr;gap:28px}.fw h4{margin:0 0 10px;font-size:13px}.fw a,.fw p{display:block;color:var(--muted);margin:0 0 7px;font-size:13px}.fw a:hover{color:var(--acc)}.fw b{color:var(--text)}.fb{max-width:1180px;margin:auto;padding:14px 20px calc(20px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:12px}@media(max-width:720px){.fw{grid-template-columns:1fr}}
+.toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translate(-50%,14px);background:var(--text);color:var(--bg);padding:10px 16px;border-radius:10px;font-weight:700;font-size:12px;opacity:0;pointer-events:none;transition:.2s;z-index:40}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.bg{position:fixed;inset:0;z-index:30;background:rgba(5,5,12,.7);backdrop-filter:blur(8px);display:none;place-items:center;padding:16px}.bg.on{display:grid}
+.modal{position:relative;display:grid;grid-template-columns:.9fr 1fr;width:100%;max-width:800px;max-height:90%;overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:18px}
+.modal .art{height:100%;min-height:300px;font-size:90px;cursor:default}
+.mc{padding:26px}.mc h2{margin:10px 0 6px}.mc p{color:var(--muted);margin:0}
+.lbl{font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--acc);margin:18px 0 6px}
+.pt{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px;font-size:12px;line-height:1.8;max-height:170px;overflow:auto}
+.acts{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.x{position:absolute;right:10px;top:10px;z-index:2;width:34px;height:34px;border-radius:10px;border:0;background:rgba(0,0,0,.5);color:#fff;font-size:20px}
+.hide{display:none!important}
+@media(max-width:720px){nav{display:none}.modal{grid-template-columns:1fr}.modal .art{min-height:150px;font-size:60px}.grid{grid-template-columns:repeat(2,1fr);gap:10px}.art{height:130px;font-size:42px}.body{padding:10px}}
+@media(max-width:380px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="bar">
+<a class="brand" href="#"><span class="mark">✳</span>Free AI Prompt</a>
+<nav><a href="#explore" data-en="Explore" data-bn="এক্সপ্লোর">Explore</a><a href="#" id="savedLink" data-en="Saved" data-bn="সেভড">Saved</a></nav>
+<div><button class="btn" id="theme" aria-label="Theme">◐</button> <button class="btn" id="lang">বাংলা</button></div>
+</div></header>
+<main>
+<section class="hero">
+<span class="eyebrow" data-en="THE CREATIVE PROMPT LIBRARY" data-bn="ক্রিয়েটিভ প্রম্পট লাইব্রেরি">THE CREATIVE PROMPT LIBRARY</span>
+<h1><span data-en="Turn your ideas into" data-bn="আপনার আইডিয়াকে দিন">Turn your ideas into</span><br><span class="grad" data-en="extraordinary visuals." data-bn="অসাধারণ ভিজ্যুয়াল রূপ।">extraordinary visuals.</span></h1>
+<p data-en="Ready-to-use AI image prompts for portraits, fashion, cinematic scenes and more. Copy, paste, create." data-bn="পোর্ট্রেট, ফ্যাশন, সিনেমাটিকসহ নানা ধরনের রেডিমেড AI ইমেজ প্রম্পট। কপি করুন, পেস্ট করুন, তৈরি করুন।">Ready-to-use AI image prompts for portraits, fashion, cinematic scenes and more. Copy, paste, create.</p>
+<label class="search"><span>⌕</span><input id="q" type="search" placeholder="Search prompts, styles, moods..." aria-label="Search"></label>
+<div class="stats"><div><b id="total">20</b><span data-en="Prompts" data-bn="প্রম্পট">Prompts</span></div><div><b>7</b><span data-en="Categories" data-bn="ক্যাটাগরি">Categories</span></div><div><b id="savedN">0</b><span data-en="Saved" data-bn="সেভ করা">Saved</span></div></div>
+</section>
+<div class="pills" id="pills"></div>
+<section id="explore">
+<div class="tool"><h2><span data-en="Explore prompts" data-bn="প্রম্পট এক্সপ্লোর">Explore prompts</span> <span class="count" id="rc">20</span></h2>
+<select id="sort" aria-label="Sort"><option value="trend">Trending</option><option value="new">Latest</option><option value="pop">Most popular</option><option value="az">A–Z</option></select></div>
+<div class="grid" id="grid"></div>
+<div class="empty" id="empty"><h3 data-en="No prompts found" data-bn="কোনো প্রম্পট পাওয়া যায়নি">No prompts found</h3><button class="btn" id="reset" data-en="Reset filters" data-bn="ফিল্টার রিসেট">Reset filters</button></div>
+<div class="more"><button class="btn" id="more" data-en="Load more ↓" data-bn="আরও দেখুন ↓">Load more ↓</button></div>
+</section>
+<section class="cta"><div><h2 data-en="Make it visual." data-bn="আইডিয়াকে দৃশ্যমান করুন।">Make it visual.</h2><p data-en="Save favourites, copy a prompt and bring your next idea to life." data-bn="পছন্দের প্রম্পট সেভ করুন, কপি করুন, নতুন কিছু বানান।">Save favourites, copy a prompt and bring your next idea to life.</p></div><a class="primary" href="#explore" data-en="Start exploring ↗" data-bn="শুরু করুন ↗">Start exploring ↗</a></section>
+</main>
+<footer><div class="fw"><div><a class="brand" href="#" style="color:var(--text);font-size:18px"><span class="mark">✳</span>Free AI Prompt</a><p data-en="A free library of ready-made AI image prompts. Copy any prompt, paste it into your favourite AI image generator, and create the picture you need." data-bn="রেডি AI ইমেজ প্রম্পটের একটি ফ্রি লাইব্রেরি। যেকোনো প্রম্পট কপি করে পছন্দের AI ইমেজ জেনারেটরে পেস্ট করুন এবং প্রয়োজনমতো ছবি বানান।">A free library of ready-made AI image prompts. Copy any prompt, paste it into your favourite AI image generator, and create the picture you need.</p></div><div><h4 data-en="Quick links" data-bn="দ্রুত লিংক">Quick links</h4><a href="#explore" data-en="Explore prompts" data-bn="প্রম্পট এক্সপ্লোর">Explore prompts</a><a href="#" id="fSaved" data-en="Saved prompts" data-bn="সেভ করা প্রম্পট">Saved prompts</a><a href="#pills" data-en="Categories" data-bn="ক্যাটাগরি">Categories</a><a href="#" data-en="Back to top ↑" data-bn="উপরে যান ↑">Back to top ↑</a></div><div><h4 data-en="Contact" data-bn="যোগাযোগ">Contact</h4><p><b>Fahim Hasan</b></p><a href="tel:01410015551">📞 01410015551</a><a href="https://wa.me/8801410015551" target="_blank" rel="noopener">💬 WhatsApp</a><p>📍 Lalmonirhat Pourasava, Lalmonirhat, Bangladesh</p></div></div><div class="fb"><span>© <span id="yr"></span> Free AI Prompt · Developed by Fahim Hasan</span><span data-en="Prompts are for inspiration; results vary by AI tool." data-bn="প্রম্পট অনুপ্রেরণার জন্য; AI টুল অনুযায়ী ফলাফল ভিন্ন হতে পারে।">Prompts are for inspiration; results vary by AI tool.</span></div></footer>
+<div class="toast" id="toast" role="status"></div>
+<div class="bg" id="bg"><section class="modal" role="dialog" aria-modal="true"><button class="x" id="x" aria-label="Close">×</button><div class="art" id="mArt"></div><div class="mc"><span class="count" id="mCat"></span><h2 id="mT"></h2><p id="mD"></p><div class="lbl">FULL IMAGE PROMPT</div><div class="pt" id="mP"></div><div class="acts"><button class="primary" id="mCopy">Copy prompt</button><button class="btn" id="mSave">♡ Save</button></div></div></section></div>
+<script>
+const P=[
+["Golden Hour Editorial","Fashion","Warm editorial portrait in golden light.","High-end fashion editorial of a confident model in a sculptural neutral outfit, warm golden hour sun, wind in hair, 85mm lens, subtle film grain, amber highlights, photorealistic skin, 4:5 vertical.",328,98,35,15,"👗"],
+["Neo Noir City","Cinematic","Rain-soaked street with neon reflections.","Cinematic neo-noir of a lone figure walking a rain-soaked futuristic street at night, magenta and cyan neon on wet asphalt, haze, anamorphic flares, 35mm grain, 16:9 movie still.",291,96,300,200,"🌃"],
+["Soft Studio Portrait","Portrait","Minimal studio portrait with soft shadows.","Photorealistic close-up studio portrait, natural expression, soft diffused key and subtle rim light, warm beige backdrop, detailed eyes, 85mm, shallow depth of field, luxury beauty look.",275,90,25,350,"🧑"],
+["Dreamscape Botanica","Fantasy","Surreal garden with glowing petals.","Enchanted botanical garden at blue hour, oversized translucent glowing flowers, drifting luminous spores, mist, dew-covered leaves, teal and lavender palette, macro detail, magical realism.",243,87,170,280,"🌺"],
+["Luxury Product Still","Product","Premium product with sculptural light.","Luxury product photo of a matte glass skincare bottle on a travertine pedestal, hard sunlight and geometric shadows, sand and cream palette, water droplets, clean negative space, 4:5.",221,84,40,20,"🧴"],
+["Quiet Mountain Morning","Nature","Misty alpine valley at sunrise.","Photorealistic alpine valley after sunrise, layered mist between pine ridges, glassy lake reflecting peach and blue sky, wide-angle, natural grading, peaceful, 16:9, no people.",203,81,200,150,"🏔️"],
+["Streetwear Motion","Fashion","Dynamic streetwear campaign.","Dynamic streetwear campaign of a model in oversized outfit, concrete architecture, mid-step fabric motion, flash mixed with late sun, charcoal and electric-lime accents, 35mm.",198,79,80,160,"👟"],
+["Sunday Slow Living","Lifestyle","Airy, calm lifestyle scene.","Sunlit minimalist living room, linen sofa, handmade ceramic cup on oak table, morning light through sheer curtains, warm neutrals, film grain, slow-living mood.",176,75,30,60,"🛋️"],
+["Chrome Dream Portrait","Portrait","Futuristic beauty with metal reflections.","Avant-garde beauty portrait wearing an abstract chrome headpiece, reflective silver, crisp flash with cool blue fill, graphite background, high contrast, 90mm lens.",167,73,215,260,"🪞"],
+["Floating Island World","Fantasy","Miniature world above the clouds.","Colossal floating island above a sea of clouds, waterfalls into the sky, mossy stone arches, glowing cliffside village, dramatic sunrise rays, epic fantasy concept art, widescreen.",151,70,190,320,"🏝️"],
+["Minimal Coffee Ritual","Product","Cozy coffee still-life.","Minimal artisanal coffee photo, handmade ceramic cup with crema on limestone, soft window light, gentle steam, scattered beans, earthy palette, 50mm, no visible text.",143,67,25,40,"☕"],
+["Wildflower Field","Nature","Dreamy meadow at summer's edge.","Dreamy low-angle wildflower meadow in late summer, white daisies and purple blooms, hazy hills, warm backlight with lens bloom, pastel grade, 35mm film character.",132,64,120,280,"🌼"],
+["Rainy Window Mood","Lifestyle","Quiet nook with rain on glass.","Moody reading nook beside a rain-streaked window, grey daylight, warm tea, open book, knitted throw, muted blue-grey with amber accents, analog film, contemplative.",129,62,210,230,"🌧️"],
+["Desert Dune Minimalism","Nature","Sculptural dunes and long shadows.","Minimal fine-art desert dunes at sunrise, flowing sand ridges, long geometric shadows, apricot and burnt sienna tones, tiny distant figure for scale, film grain, 3:2.",121,60,28,10,"🏜️"],
+["Glass Perfume Campaign","Product","Luxury fragrance with luminous glass.","Luxury fragrance still life, transparent perfume bottle on glossy dark stone, fine mist, narrow warm light beam through glass, amber reflections, plum shadows, macro, no logo.",117,58,310,330,"🫧"],
+["Celestial Guardian","Fantasy","Mythic character in starlight.","Epic fantasy concept art of a celestial guardian among ruined arches, layered flowing robes, gold ornament, starlight particles in mist, moonlit rim light, indigo and silver, painterly realism.",113,56,245,270,"✨"],
+["Classic Film Headshot","Portrait","Timeless monochrome portrait.","Black and white fine-art headshot, thoughtful expression, soft Rembrandt lighting, rich tonal range, authentic skin texture, 50mm film, gentle grain, dark seamless background.",109,54,0,230,"🎞️"],
+["Urban Architecture Lines","Cinematic","Geometry with dramatic shadow.","Modern concrete building with bold geometric forms, low-angle view, crisp midday sun and graphic shadows, warm grey and ivory palette, perfect verticals, no people, no text.",104,52,210,180,"🏢"],
+["Fresh Citrus Splash","Product","Bright food shot with water splash.","High-speed commercial photo of citrus suspended in a clear water splash, frozen droplets, vibrant orange and lemon, pale background, bright studio light, macro detail.",98,49,45,25,"🍊"],
+["Coastal Blue Escape","Nature","Peaceful coast in soft blues.","Serene coastal scene, turquoise water on pale sand, distant cliffs in sea mist, overcast soft daylight, long-exposure water, clean horizon, wide-angle 16:9.",91,46,185,215,"🌊"]
+].map((a,i)=>({id:i+1,t:a[0],c:a[1],d:a[2],p:a[3],l:a[4],tr:a[5],h1:a[6],h2:a[7],e:a[8]}));
+const CATS=["All","Portrait","Fashion","Cinematic","Fantasy","Product","Nature","Lifestyle"];
+const CBN={All:"সব",Portrait:"পোর্ট্রেট",Fashion:"ফ্যাশন",Cinematic:"সিনেমাটিক",Fantasy:"ফ্যান্টাসি",Product:"প্রোডাক্ট",Nature:"প্রকৃতি",Lifestyle:"লাইফস্টাইল"};
+const SC=['fig','city','face','bloom','bottle','mount','fig','room','face','island','cup','bloom','room','dune','bottle','fig','face','bldg','citrus','coast'];const IMG={};P.forEach((p,i)=>{p.s=SC[i];p.img=IMG[p.id]||''});function art(p,k){const a=`hsl(${p.h1} 75% 62%)`,b=`hsl(${p.h2} 70% 28%)`,l=`hsl(${p.h1} 90% 88%)`,d=`hsl(${p.h2} 55% 12%)`,m=`hsl(${p.h2} 60% 45%)`,g='g'+k+p.id;const S={mount:`<circle cx='140' cy='45' r='16' fill='${l}'/><path d='M0 150V95l40-40 35 35 30-25 50 50 45-30v65z' fill='${m}'/><path d='M0 150V115l50-30 40 28 40-22 70 35v24z' fill='${d}'/>`,city:`<path d='M10 150V70h30v80zM45 150V40h28v110zM78 150V85h26v65zM110 150V30h32v120zM148 150V75h42v75z' fill='${d}'/><g fill='${l}' opacity='.8'><rect x='52' y='52' width='4' height='6'/><rect x='60' y='70' width='4' height='6'/><rect x='118' y='44' width='4' height='6'/><rect x='128' y='66' width='4' height='6'/><rect x='160' y='92' width='4' height='6'/></g><rect y='138' width='200' height='12' fill='${a}' opacity='.5'/><path d='M115 36h22M152 82h30' stroke='${l}' stroke-width='3'/><path d='M20 0l-8 30M70 10l-8 30M130 0l-8 30M180 12l-8 30' stroke='${l}' opacity='.3'/>`,fig:`<ellipse cx='100' cy='142' rx='60' ry='7' fill='${d}' opacity='.4'/><circle cx='100' cy='42' r='14' fill='${l}'/><path d='M100 56L74 86 60 146H140L126 86z' fill='${m}'/><path d='M74 86L56 114M126 86l18 28' stroke='${l}' stroke-width='6' stroke-linecap='round'/>`,face:`<path d='M30 150c0-40 30-48 70-48s70 8 70 48z' fill='${m}'/><rect x='92' y='85' width='16' height='22' fill='${l}'/><ellipse cx='100' cy='62' rx='26' ry='32' fill='${l}'/><path d='M72 58c0-34 56-34 56 0-6-16-50-16-56 0z' fill='${d}'/>`,bloom:`<path d='M50 150V90M100 150V60M150 150V100' stroke='${m}' stroke-width='3'/>${[[50,90],[100,60],[150,100]].map(([x,y])=>`<circle cx='${x}' cy='${y}' r='15' fill='${l}'/><circle cx='${x}' cy='${y}' r='6' fill='${a}'/>`).join('')}<g fill='${l}' opacity='.7'><circle cx='25' cy='40' r='2'/><circle cx='170' cy='30' r='3'/><circle cx='75' cy='25' r='2'/></g>`,bottle:`<rect y='118' width='200' height='32' fill='${d}' opacity='.5'/><rect x='62' y='108' width='76' height='14' rx='3' fill='${l}' opacity='.8'/><rect x='82' y='50' width='36' height='58' rx='8' fill='${m}'/><rect x='92' y='36' width='16' height='14' fill='${l}'/><rect x='86' y='62' width='8' height='36' rx='4' fill='${l}' opacity='.5'/>`,room:`<rect x='120' y='20' width='60' height='70' fill='${l}' opacity='.6'/><path d='M150 20v70M120 55h60' stroke='${d}' stroke-width='2'/><rect x='20' y='95' width='100' height='35' rx='8' fill='${m}'/><rect x='14' y='85' width='22' height='45' rx='8' fill='${d}' opacity='.6'/><rect y='130' width='200' height='20' fill='${d}'/><circle cx='165' cy='124' r='6' fill='${l}'/>`,island:`<ellipse cx='50' cy='125' rx='50' ry='14' fill='${l}' opacity='.5'/><ellipse cx='150' cy='135' rx='60' ry='14' fill='${l}' opacity='.4'/><path d='M50 70h100l-20 40-30 20-30-20z' fill='${d}' opacity='.8'/><path d='M50 70q50-24 100 0z' fill='${m}'/><rect x='95' y='40' width='10' height='30' fill='${l}'/><path d='M92 40l8-16 8 16z' fill='${l}'/><path d='M120 100v36' stroke='${l}' stroke-width='3' opacity='.7'/><g fill='${l}'><circle cx='30' cy='30' r='1.5'/><circle cx='165' cy='25' r='2'/><circle cx='70' cy='15' r='1.5'/></g>`,cup:`<ellipse cx='100' cy='116' rx='58' ry='10' fill='${d}' opacity='.5'/><path d='M62 70h76c0 34-14 46-38 46s-38-12-38-46z' fill='${l}'/><path d='M138 78c20 0 20 24 0 24' stroke='${l}' stroke-width='5' fill='none'/><ellipse cx='100' cy='70' rx='38' ry='6' fill='${m}'/><path d='M88 56c-8-10 8-14 0-26M108 56c-8-10 8-14 0-26' stroke='${l}' stroke-width='3' fill='none' opacity='.7'/>`,dune:`<circle cx='150' cy='40' r='14' fill='${l}'/><path d='M0 110C50 70 90 100 130 80s50 10 70 0v70H0z' fill='${m}'/><path d='M0 150v-25c60-30 100 10 200-10v35z' fill='${d}' opacity='.8'/><circle cx='70' cy='86' r='2.5' fill='${d}'/>`,bldg:`<path d='M20 150L60 0h30L50 150zM70 150L110 20h34L104 150zM124 150l30-110h36l-36 110z' fill='${m}'/><path d='M60 0h30L50 150H20z' fill='${l}' opacity='.35'/>`,citrus:`<path d='M30 130q35-24 70 0t70 0v20H30z' fill='${l}' opacity='.5'/><circle cx='100' cy='75' r='36' fill='${a}'/><circle cx='100' cy='75' r='30' fill='${l}'/><path d='M100 45v60M70 75h60M79 54l42 42M121 54L79 96' stroke='${a}' stroke-width='2'/><g fill='${l}' opacity='.8'><circle cx='45' cy='50' r='4'/><circle cx='160' cy='40' r='5'/><circle cx='150' cy='115' r='3'/></g>`,coast:`<circle cx='140' cy='45' r='14' fill='${l}'/><path d='M0 85h200v65H0z' fill='${m}'/><path d='M0 105q25-10 50 0t50 0 50 0 50 0v45H0z' fill='${a}' opacity='.7'/><path d='M0 130q25-10 50 0t50 0 50 0 50 0v20H0z' fill='${l}' opacity='.6'/><path d='M0 85l20-15 22 15z' fill='${d}'/>`};return `<svg viewBox='0 0 200 150' preserveAspectRatio='xMidYMid slice' aria-hidden='true'><defs><linearGradient id='${g}' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='${a}'/><stop offset='1' stop-color='${b}'/></linearGradient></defs><rect width='200' height='150' fill='url(#${g})'/>${S[p.s]}</svg>${p.img?`<img class='pic' src='${p.img}' alt='${p.t}' loading='lazy' onerror='this.remove()'>`:''}`}
+const $=s=>document.querySelector(s);
+let cat="All",term="",sort="trend",limit=12,lang="en",only=false,cur=null,saved=new Set();
+try{saved=new Set(JSON.parse(localStorage.getItem("fap_saved")||"[]"))}catch(e){}
+try{const t=localStorage.getItem("fap_theme");if(t)document.documentElement.dataset.theme=t}catch(e){}
+const tr=(e,b)=>lang==="bn"?b:e;
+const bg=p=>`linear-gradient(135deg,hsl(${p.h1} 75% 58%),hsl(${p.h2} 70% 32%))`;
+function list(){let a=P.filter(p=>(!only||saved.has(p.id))&&(cat==="All"||p.c===cat)&&(!term||(p.t+p.d+p.p+p.c).toLowerCase().includes(term.toLowerCase())));
+const f={trend:(x,y)=>y.tr-x.tr,new:(x,y)=>y.id-x.id,pop:(x,y)=>y.l-x.l,az:(x,y)=>x.t.localeCompare(y.t)}[sort];return a.sort(f)}
+function pills(){$("#pills").innerHTML=CATS.map(c=>`<button class="pill ${c===cat&&!only?"on":""}" data-c="${c}">${lang==="bn"?CBN[c]:c}</button>`).join("")}
+function render(){const a=list(),s=a.slice(0,limit);
+$("#rc").textContent=a.length;$("#savedN").textContent=saved.size;pills();
+$("#grid").innerHTML=s.map(p=>`<article class="card"><div class="art" data-o="${p.id}">${art(p,'c')}<span class="tag">${p.c}</span><button class="heart ${saved.has(p.id)?"on":""}" data-s="${p.id}" aria-label="Save">${saved.has(p.id)?"♥":"♡"}</button></div><div class="body"><h3 data-o="${p.id}">${p.t}</h3><p>${p.d}</p><div class="foot"><span>♡ ${p.l} · ${p.tr}%</span><button class="copy" data-c="${p.id}">${tr("Copy prompt","প্রম্পট কপি")}</button></div></div></article>`).join("");
+$("#empty").classList.toggle("on",!a.length);$("#grid").classList.toggle("hide",!a.length);
+$("#more").classList.toggle("hide",s.length>=a.length||!a.length)}
+function toast(t){const e=$("#toast");e.textContent=t;e.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove("on"),2000)}
+async function copy(id){const p=P.find(x=>x.id===id);try{await navigator.clipboard.writeText(p.p)}catch(e){const t=document.createElement("textarea");t.value=p.p;document.body.appendChild(t);t.select();document.execCommand("copy");t.remove()}toast(tr("Prompt copied!","প্রম্পট কপি হয়েছে!"))}
+function save(id){saved.has(id)?saved.delete(id):saved.add(id);try{localStorage.setItem("fap_saved",JSON.stringify([...saved]))}catch(e){}render();toast(saved.has(id)?tr("Saved","সেভ হয়েছে"):tr("Removed","সরানো হয়েছে"))}
+function mSave(){$("#mSave").textContent=saved.has(cur.id)?tr("♥ Saved","♥ সেভ করা"):tr("♡ Save","♡ সেভ করুন")}
+function open(id){cur=P.find(p=>p.id===id);$("#mArt").innerHTML=art(cur,'m');$("#mCat").textContent=cur.c;$("#mT").textContent=cur.t;$("#mD").textContent=cur.d;$("#mP").textContent=cur.p;$("#mCopy").textContent=tr("Copy prompt","প্রম্পট কপি");mSave();$("#bg").classList.add("on");document.body.style.overflow="hidden"}
+function close(){$("#bg").classList.remove("on");document.body.style.overflow=""}
+$("#grid").addEventListener("click",e=>{const s=e.target.closest("[data-s]"),c=e.target.closest("[data-c]"),o=e.target.closest("[data-o]");if(s)save(+s.dataset.s);else if(c)copy(+c.dataset.c);else if(o)open(+o.dataset.o)});
+$("#pills").addEventListener("click",e=>{const b=e.target.closest("[data-c]");if(!b)return;cat=b.dataset.c;only=false;limit=12;render()});
+$("#q").addEventListener("input",e=>{term=e.target.value;limit=12;render()});
+$("#sort").addEventListener("change",e=>{sort=e.target.value;render()});
+$("#more").addEventListener("click",()=>{limit+=8;render()});
+$("#reset").addEventListener("click",()=>{cat="All";term="";only=false;$("#q").value="";render()});
+$("#savedLink").addEventListener("click",e=>{e.preventDefault();only=!only;cat="All";term="";$("#q").value="";limit=20;render();$("#explore").scrollIntoView({behavior:"smooth"})});
+$("#lang").addEventListener("click",()=>{lang=lang==="en"?"bn":"en";$("#lang").textContent=lang==="en"?"বাংলা":"English";document.querySelectorAll("[data-en]").forEach(el=>el.textContent=el.dataset[lang]);$("#q").placeholder=tr("Search prompts, styles, moods...","প্রম্পট, স্টাইল বা মুড খুঁজুন...");render()});
+$("#theme").addEventListener("click",()=>{const r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==="dark":matchMedia("(prefers-color-scheme:dark)").matches;r.dataset.theme=dark?"light":"dark";try{localStorage.setItem("fap_theme",r.dataset.theme)}catch(e){}});
+$("#x").addEventListener("click",close);$("#bg").addEventListener("click",e=>{if(e.target.id==="bg")close()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")close();if(e.key==="/"&&document.activeElement.tagName!=="INPUT"){e.preventDefault();$("#q").focus()}});
+$("#mCopy").addEventListener("click",()=>copy(cur.id));$("#mSave").addEventListener("click",()=>{save(cur.id);mSave()});
+$("#fSaved").addEventListener("click",e=>{e.preventDefault();$("#savedLink").click()});$("#yr").textContent=new Date().getFullYear();render();
+</script>
+</body>
+</html>
